@@ -1,0 +1,15 @@
+{% extends 'gestion_bodegas/base.html' %}
+
+{% block title %}Subir Foto del Proyecto{% endblock %}
+
+{% block content %}
+<h1>Subir Foto del Proyecto</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.as_p }}
+    </div>
+    <button type="submit" class="btn btn-primary">Subir</button>
+</form>
+<a href="{% url 'index' %}" class="btn btn-secondary">Volver</a>
+{% endblock %}

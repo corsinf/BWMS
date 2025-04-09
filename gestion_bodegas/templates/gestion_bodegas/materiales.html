@@ -1,0 +1,37 @@
+{% extends 'gestion_bodegas/base.html' %}
+
+{% block title %}Materiales{% endblock %}
+
+{% block content %}
+<h1>Materiales</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Stock</th>
+            <th>Precio Unitario</th>
+            {% if user.is_superuser %}
+                <th>Acciones</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for material in materiales %}
+            <tr>
+                <td>{{ material.nombre }}</td>
+                <td>{{ material.descripcion }}</td>
+                <td>{{ material.stock }}</td>
+                <td>{{ material.precio_unitario }}</td>
+                {% if user.is_superuser %}
+                    <td>
+                        <a href="{% url 'edit_material' material.id %}" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="{% url 'delete_material' material.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'index' %}" class="btn btn-primary">Volver</a>
+{% endblock %}

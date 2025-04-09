@@ -1,0 +1,30 @@
+{% extends 'gestion_bodegas/base.html' %}
+
+{% block title %}Movimientos de Bodega{% endblock %}
+
+{% block content %}
+<h1>Movimientos de Bodega</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tipo</th>
+            <th>Material</th>
+            <th>Cantidad</th>
+            <th>Fecha</th>
+            <th>Bodega</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for movimiento in movimientos %}
+            <tr>
+                <td>{{ movimiento.tipo }}</td>
+                <td>{{ movimiento.material.nombre }}</td>
+                <td>{{ movimiento.cantidad }}</td>
+                <td>{{ movimiento.fecha }}</td>
+                <td>{{ movimiento.bodega.nombre }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'index' %}" class="btn btn-primary">Volver</a>
+{% endblock %}

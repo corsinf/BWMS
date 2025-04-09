@@ -1,0 +1,15 @@
+{% extends 'gestion_bodegas/base.html' %}
+
+{% block title %}Editar Material{% endblock %}
+
+{% block content %}
+<h1>Editar Material</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.as_p }}
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+</form>
+<a href="{% url 'materiales' %}" class="btn btn-secondary">Volver</a>
+{% endblock %}

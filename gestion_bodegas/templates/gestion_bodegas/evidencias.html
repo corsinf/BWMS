@@ -1,0 +1,21 @@
+{% extends 'gestion_bodegas/base.html' %}
+
+{% block title %}Evidencias del Proyecto{% endblock %}
+
+{% block content %}
+<h1>Evidencias del Proyecto</h1>
+<div class="row">
+    {% for foto in fotos %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ foto.imagen.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">{{ foto.descripcion }}</p>
+                    <p class="card-text"><small class="text-muted">{{ foto.fecha_subida }}</small></p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<a href="{% url 'index' %}" class="btn btn-primary">Volver</a>
+{% endblock %}

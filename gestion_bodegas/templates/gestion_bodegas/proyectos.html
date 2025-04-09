@@ -1,0 +1,26 @@
+{% extends 'gestion_bodegas/base.html' %}
+
+{% block title %}Proyectos{% endblock %}
+
+{% block content %}
+<h1>Proyectos</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Cliente</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for proyecto in proyectos %}
+            <tr>
+                <td>{{ proyecto.nombre }}</td>
+                <td>{{ proyecto.estado }}</td>
+                <td>{{ proyecto.cliente.nombre }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'index' %}" class="btn btn-primary">Volver</a>
+{% endblock %}
