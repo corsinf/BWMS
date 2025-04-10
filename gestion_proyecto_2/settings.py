@@ -75,12 +75,15 @@ WSGI_APPLICATION = 'gestion_proyecto_2.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gestion_proyecto_2',
-        'USER': 'root',
-        'PASSWORD': '148192021',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'mssql',
+        'NAME': 'gestion_proyecto_2',  # El nombre de tu base de datos
+        'USER': 'developers',  # Usuario de SQL Server
+        'PASSWORD': 'Sinohagobienmarcho/*123',  # Contraseña de SQL Server
+        'HOST': '186.4.219.172',  # Dirección de tu servidor SQL Server
+        'PORT': '1487',  # El puerto por defecto para SQL Server
+        'OPTIONS': {
+            'driver': 'ODBC Driver 17 for SQL Server',  # Asegúrate de tener instalado este driver
+        },
     }
 }
 
