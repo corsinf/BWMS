@@ -21,5 +21,5 @@ from django.shortcuts import redirect
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('gestion_bodegas/', include('gestion_bodegas.urls')),
-     path('', lambda request: redirect('login')),  # Redirigir la ruta raíz a la página de inicio de sesión
+    path('', lambda request: redirect('login')),  # Redirigir la ruta raíz a la página de inicio de sesión
 ]
