@@ -9,4 +9,3 @@ class Cliente(models.Model):
     email = models.EmailField(unique=True)  # Correo electrónico único para cada cliente.
     direccion = models.TextField(blank=True, null=True)  # Dirección del cliente (opcional).
 
-    #prueba
