@@ -1,28 +1,81 @@
-# Archivos pyc y __pycache__
+# -----------------------------------
+# Archivos Python compilados / caché
+# -----------------------------------
 __pycache__/
 *.py[cod]
+*$py.class
 
-# Archivos temporales de sistema operativo
+# ------------------------------
+# Archivos de entorno virtual
+# ------------------------------
+.env
+*.env
+env/
+venv/
+.venv/
+ENV/
+.Python
+
+# ------------------------------
+# Archivos de log
+# ------------------------------
+*.log
+
+# ------------------------------
+# Archivos de sistema operativo
+# ------------------------------
+.DS_Store
+Thumbs.db
 *.swp
 *.swo
 *.tmp
-.DS_Store
-Thumbs.db
 
-# Archivos de entorno
-.env
-*.env
-
-# Archivos de logs
-*.log
-
-# Archivos temporales de VSCode o editores
-.vscode/
-.idea/
-
-# Archivos temporales de test
+# ------------------------------
+# Archivos temporales de testing
+# ------------------------------
 htmlcov/
 coverage.*
 .tox/
 .cache/
+*.cover
+nosetests.xml
+*.spec
 
+# ------------------------------
+# Archivos de empaquetado / dist
+# ------------------------------
+build/
+dist/
+*.egg-info/
+.eggs/
+sdist/
+wheels/
+*.whl
+MANIFEST.in
+
+# ------------------------------
+# Archivos de PyInstaller
+# ------------------------------
+*.manifest
+
+# ------------------------------
+# Django-specific
+# ------------------------------
+*.pot
+*.mo
+*.sqlite3
+*.sqlite3-journal
+media/         # ⚠️ Descomenta si SÍ quieres trackear archivos subidos
+static/        # ⚠️ Descomenta si SÍ quieres trackear los recolectados
+staticfiles/
+
+# ------------------------------
+# Archivos de configuración de IDEs
+# ------------------------------
+.vscode/
+.idea/
+
+# ------------------------------
+# Otros
+# ------------------------------
+.ipynb_checkpoints
