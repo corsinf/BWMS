@@ -8,3 +8,5 @@ class Cliente(models.Model):
     telefono = models.CharField(max_length=20, blank=True, null=True)  # Teléfono del cliente (opcional).
     email = models.EmailField(unique=True)  # Correo electrónico único para cada cliente.
     direccion = models.TextField(blank=True, null=True)  # Dirección del cliente (opcional).
+
+    #prueba
