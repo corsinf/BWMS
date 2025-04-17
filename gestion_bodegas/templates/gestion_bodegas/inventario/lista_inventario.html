@@ -1,0 +1,30 @@
+{% extends 'gestion_bodegas/base.html' %}
+{% block content %}
+    <h1>Inventario en Bodegas</h1>
+    <a href="{% url 'crear_inventario' %}">Añadir Artículo al Inventario</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Bodega</th>
+                <th>Artículo</th>
+                <th>Cantidad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for inventario in inventarios %}
+                <tr>
+                    <td>{{ inventario.bodega.nombre }}</td>
+                    <td>{{ inventario.articulo.nombre }}</td>
+                    <td>{{ inventario.cantidad }}</td>
+                    <td>
+                        <a href="{% url 'editar_inventario' inventario.pk %}">Editar</a>
+                        <a href="{% url 'eliminar_inventario' inventario.pk %}">Eliminar</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="4">No hay artículos en el inventario.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

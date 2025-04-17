@@ -1,0 +1,11 @@
+{% extends 'gestion_bodegas/base.html' %}
+
+{% block content %}
+    <h1>Crear Nueva Bodega</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Bodega</button>
+    </form>
+    <a href="{% url 'lista_bodegas' %}">Volver a la lista de bodegas</a>
+{% endblock %}

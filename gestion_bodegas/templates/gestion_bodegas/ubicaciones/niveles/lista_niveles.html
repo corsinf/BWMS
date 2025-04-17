@@ -1,0 +1,17 @@
+{% extends 'gestion_bodegas/base.html' %}
+
+{% block content %}
+    <h1>Lista de Niveles</h1>
+    <a href="{% url 'crear_nivel' %}">Crear Nuevo Nivel</a>
+    <ul>
+        {% for nivel in niveles %}
+            <li>
+                {{ nivel.nombre }} (Estantería: {{ nivel.estanteria.nombre }})
+                <a href="{% url 'editar_nivel' nivel.pk %}">Editar</a>
+                <a href="{% url 'eliminar_nivel' nivel.pk %}">Eliminar</a>
+            </li>
+        {% empty %}
+            <li>No hay niveles registrados.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

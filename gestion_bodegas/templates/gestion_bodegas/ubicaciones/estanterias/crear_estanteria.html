@@ -1,0 +1,11 @@
+{% extends 'gestion_bodegas/base.html' %}
+
+{% block content %}
+    <h1>Crear Nueva Estantería</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Estantería</button>
+    </form>
+    <a href="{% url 'lista_estanterias' %}">Volver a la lista de estanterías</a>
+{% endblock %}

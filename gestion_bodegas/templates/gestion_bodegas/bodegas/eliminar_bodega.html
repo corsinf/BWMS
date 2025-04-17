@@ -1,0 +1,11 @@
+{% extends 'gestion_bodegas/base.html' %}
+
+{% block content %}
+    <h1>Eliminar Bodega</h1>
+    <p>¿Estás seguro de que deseas eliminar la bodega "{{ bodega.nombre }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmar Eliminación</button>
+    </form>
+    <a href="{% url 'lista_bodegas' %}">Volver a la lista de bodegas</a>
+{% endblock %}

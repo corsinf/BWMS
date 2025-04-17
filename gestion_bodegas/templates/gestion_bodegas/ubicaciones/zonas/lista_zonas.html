@@ -1,0 +1,17 @@
+{% extends 'gestion_bodegas/base.html' %}
+
+{% block content %}
+    <h1>Lista de Zonas</h1>
+    <a href="{% url 'crear_zona' %}">Crear Nueva Zona</a>
+    <ul>
+        {% for zona in zonas %}
+            <li>
+                {{ zona.nombre }} (Bodega: {{ zona.bodega.nombre }})
+                <a href="{% url 'editar_zona' zona.pk %}">Editar</a>
+                <a href="{% url 'eliminar_zona' zona.pk %}">Eliminar</a>
+            </li>
+        {% empty %}
+            <li>No hay zonas registradas.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

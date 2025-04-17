@@ -1,6 +1,6 @@
 from django import forms  # Importamos el módulo `forms` de Django para crear formularios.
 from django.contrib.auth.models import User  # Importamos el modelo `User` para gestionar usuarios.
-from .models import Proyecto, Cliente, Material, MovimientoBodega, FotoProyecto  # Importamos los modelos necesarios.
+from .models import Proyecto, Cliente, Material, FotoProyecto  # Importamos los modelos necesarios.
 
 # ------------------- FORMULARIO DE USUARIO -------------------
 class UserForm(forms.ModelForm):
@@ -24,13 +24,6 @@ class MaterialForm(forms.ModelForm):
     class Meta:
         model = Material  # Basado en el modelo `Material`.
         fields = ['nombre', 'descripcion', 'stock', 'precio_unitario']  # Campos que se incluirán en el formulario.
-
-# ------------------- FORMULARIO DE MOVIMIENTO DE BODEGA -------------------
-class MovimientoBodegaForm(forms.ModelForm):
-    # Formulario para registrar movimientos de entrada o salida en una bodega.
-    class Meta:
-        model = MovimientoBodega  # Basado en el modelo `MovimientoBodega`.
-        fields = ['tipo', 'material', 'cantidad', 'bodega']  # Campos que se incluirán en el formulario.
 
 # ------------------- FORMULARIO DE FOTO DE PROYECTO -------------------
 class FotoProyectoForm(forms.ModelForm):

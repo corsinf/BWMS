@@ -1,0 +1,17 @@
+{% extends 'gestion_bodegas/base.html' %}
+
+{% block content %}
+    <h1>Lista de Estanterías</h1>
+    <a href="{% url 'crear_estanteria' %}">Crear Nueva Estantería</a>
+    <ul>
+        {% for estanteria in estanterias %}
+            <li>
+                {{ estanteria.nombre }} (Zona: {{ estanteria.zona.nombre }})
+                <a href="{% url 'editar_estanteria' estanteria.pk %}">Editar</a>
+                <a href="{% url 'eliminar_estanteria' estanteria.pk %}">Eliminar</a>
+            </li>
+        {% empty %}
+            <li>No hay estanterías registradas.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

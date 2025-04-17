@@ -1,0 +1,10 @@
+{% extends 'gestion_bodegas/base.html' %}
+{% block content %}
+    <h1>Eliminar del Inventario</h1>
+    <p>¿Estás seguro de que deseas eliminar "{{ inventario_bodega.articulo.nombre }}" de "{{ inventario_bodega.bodega.nombre }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmar Eliminación</button>
+    </form>
+    <a href="{% url 'lista_inventario' %}">Volver al inventario</a>
+{% endblock %}

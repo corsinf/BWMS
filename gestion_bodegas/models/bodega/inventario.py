@@ -1,0 +1,44 @@
+from django.db import models
+from .bodegas import Bodega
+from .articulos import Articulo
+
+class InventarioBodega(models.Model):
+    bodega = models.ForeignKey(Bodega, on_delete=models.CASCADE, related_name='inventario')
+    articulo = models.ForeignKey(Articulo, on_delete=models.CASCADE, related_name='inventario')
+    cantidad = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        unique_together = ('bodega', 'articulo')
+
+    def __str__(self):
+        return f"{self.articulo.nombre} en {self.bodega.nombre}: {self.cantidad}"
+
+# Modelos Adicionales (Opcionales)
+
+class TransaccionInventario(models.Model):
+    TIPO_CHOICES = [
+        ('entrada', 'Entrada'),
+        ('salida', 'Salida'),
+    ]
+    tipo = models.CharField(max_length=10, choices=TIPO_CHOICES)
+    fecha = models.DateTimeField(auto_now_add=True)
+    cantidad = models.PositiveIntegerField()
+    articulo = models.ForeignKey(Articulo, on_delete=models.CASCADE, related_name='transacciones')
+    bodega = models.ForeignKey(Bodega, on_delete=models.CASCADE, related_name='transacciones')
+    # Puedes añadir campos para el usuario que realizó la transacción, etc.
+
+    def __str__(self):
+        return f"{self.tipo} de {self.articulo.nombre} en {self.bodega.nombre} ({self.cantidad} el {self.fecha})"
+
+class HistorialMovimiento(models.Model):
+    articulo = models.ForeignKey(Articulo, on_delete=models.CASCADE, related_name='movimientos')
+    bodega_origen = models.ForeignKey(Bodega, on_delete=models.SET_NULL, null=True, related_name='salidas')
+    bodega_destino = models.ForeignKey(Bodega, on_delete=models.CASCADE, related_name='entradas')
+    fecha = models.DateTimeField(auto_now_add=True)
+    cantidad = models.PositiveIntegerField()
+    # Puedes añadir información sobre el usuario que realizó la transferencia
+
+    def __str__(self):
+        return f"Transferencia de {self.articulo.nombre} de {self.bodega_origen} a {self.bodega_destino} ({self.cantidad} el {self.fecha})"
+
+# Si necesitas gestión de usuarios y roles, podrías definir modelos aquí o usar los modelos de Django Auth.
