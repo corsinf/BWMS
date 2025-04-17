@@ -16,6 +16,13 @@ class ListaZonas(ListView):
     model = Zona
     template_name = 'gestion_bodegas/ubicaciones/zonas/lista_zonas.html'
     context_object_name = 'zonas'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        from ...models.bodega.ubicaciones import Estanteria, Nivel
+        context['estanterias'] = Estanteria.objects.all()
+        context['niveles'] = Nivel.objects.all()
+        return context
 
 class CrearZona(CreateView):
     model = Zona
