@@ -6,7 +6,8 @@
     <ul>
         {% for bodega in bodegas %}
             <li>
-                {{ bodega.nombre }} - {{ bodega.ubicacion }}
+                <a href="{% url 'articulos_por_bodega' bodega.pk %}">{{ bodega.nombre }}</a>
+                - {{ bodega.ubicacion }}
                 <a href="{% url 'editar_bodega' bodega.pk %}">Editar</a>
                 <a href="{% url 'eliminar_bodega' bodega.pk %}">Eliminar</a>
             </li>

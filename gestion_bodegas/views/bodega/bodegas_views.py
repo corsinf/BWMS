@@ -4,6 +4,8 @@ from django.views import View
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.forms import ModelForm
+from ...models.bodega.bodegas import Bodega
+from ...models.bodega.inventario import InventarioBodega
 
 class BodegaForm(ModelForm):
     class Meta:
@@ -32,3 +34,16 @@ class EliminarBodega(DeleteView):
     template_name = 'gestion_bodegas/bodegas/eliminar_bodega.html'
     success_url = reverse_lazy('lista_bodegas')
     context_object_name = 'bodega'
+    
+
+class ListaArticulosPorBodega(View):
+    template_name = 'gestion_bodegas/bodegas/articulos_por_bodega.html'
+
+    def get(self, request, bodega_id):
+        bodega = get_object_or_404(Bodega, pk=bodega_id)
+        inventario = InventarioBodega.objects.filter(bodega=bodega).select_related('articulo')
+        context = {
+            'bodega': bodega,
+            'inventario': inventario,
+        }
+        return render(request, self.template_name, context)

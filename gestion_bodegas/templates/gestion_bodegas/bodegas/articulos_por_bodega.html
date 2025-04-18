@@ -1,0 +1,36 @@
+{% extends 'gestion_bodegas/base.html' %}
+
+{% block content %}
+    <h1>Artículos en la Bodega: {{ bodega.nombre }}</h1>
+    <p>Ubicación: {{ bodega.ubicacion }}</p>
+
+    {% if inventario %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre del Artículo</th>
+                    <th>Código RFID</th>
+                    <th>Cantidad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in inventario %}
+                    <tr>
+                        <td>{{ item.articulo.nombre }}</td>
+                        <td>{{ item.articulo.codigo_rfid }}</td>
+                        <td>{{ item.cantidad }}</td>
+                        <td>
+                            <a href="{% url 'editar_inventario' item.pk %}">Editar Inventario</a>
+                            </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay artículos en esta bodega.</p>
+    {% endif %}
+
+    <br>
+    <a href="{% url 'lista_bodegas' %}">Volver a la lista de bodegas</a>
+{% endblock %}
