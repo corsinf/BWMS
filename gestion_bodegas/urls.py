@@ -50,6 +50,7 @@ urlpatterns = [
     path('bodegas/crear/', bodegas_views.CrearBodega.as_view(), name='crear_bodega'),
     path('bodegas/editar/<int:pk>/', bodegas_views.EditarBodega.as_view(), name='editar_bodega'),
     path('bodegas/eliminar/<int:pk>/', bodegas_views.EliminarBodega.as_view(), name='eliminar_bodega'),
+    path('bodegas/<int:bodega_id>/articulos/', bodegas_views.ListaArticulosPorBodega.as_view(), name='articulos_por_bodega'),
 
     # URLs para Artículos
     path('articulos/', articulos_views.ListaArticulos.as_view(), name='lista_articulos'),
