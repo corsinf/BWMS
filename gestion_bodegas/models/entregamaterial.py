@@ -1,6 +1,6 @@
 from django.db import models  # Importamos el módulo `models` de Django para definir modelos.
-from .proyecto import Proyecto
 from .material import Material
+from .presupuesto import Proyecto
 
 # ------------------- MODELO ENTREGA DE MATERIAL -------------------
 class EntregaMaterial(models.Model):

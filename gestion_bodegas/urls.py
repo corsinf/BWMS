@@ -1,4 +1,5 @@
 from django.urls import path
+from .views.presupuesto import proyectos_views, partidas_views, recursos_views
 from .views import (
     login_view, logout_view, index,
     clientes, register_cliente,
@@ -28,8 +29,8 @@ urlpatterns = [
     path('clientes/registrar/', register_cliente, name='register_cliente'),
 
     # Proyecto
-    path('proyectos/', proyectos, name='proyectos'),
-    path('proyectos/registrar/', register_project, name='register_project'),
+    # path('proyectos/', proyectos, name='proyectos'),
+    # path('proyectos/registrar/', register_project, name='register_project'),
 
     # Material
     path('materiales/', materiales, name='materiales'),
@@ -79,4 +80,26 @@ urlpatterns = [
     path('ubicaciones/niveles/crear/', ubicaciones_views.CrearNivel.as_view(), name='crear_nivel'),
     path('ubicaciones/niveles/editar/<int:pk>/', ubicaciones_views.EditarNivel.as_view(), name='editar_nivel'),
     path('ubicaciones/niveles/eliminar/<int:pk>/', ubicaciones_views.EliminarNivel.as_view(), name='eliminar_nivel'),
+
+    # URLs para Proyectos (Presupuesto)
+    path('presupuesto/proyectos/', proyectos_views.ListarProyectos.as_view(), name='listar_proyectos'),
+    path('presupuesto/proyectos/<int:pk>/', proyectos_views.DetalleProyecto.as_view(), name='detalle_proyecto'),
+    path('presupuesto/proyectos/nuevo/', proyectos_views.CrearProyecto.as_view(), name='crear_proyecto'),
+    path('presupuesto/proyectos/<int:pk>/editar/', proyectos_views.EditarProyecto.as_view(), name='editar_proyecto'),
+
+
+    # URLs para Partidas Presupuestarias
+    path('presupuesto/partidas/<int:proyecto_id>/', partidas_views.ListarPartidas.as_view(), name='listar_partidas'),
+    path('presupuesto/partidas/<int:pk>/', partidas_views.DetallePartida.as_view(), name='detalle_partida'),
+    path('presupuesto/partidas/<int:proyecto_id>/nueva/', partidas_views.CrearPartida.as_view(), name='crear_partida'),
+    path('presupuesto/partidas/<int:pk>/editar/', partidas_views.EditarPartida.as_view(), name='editar_partida'),
+    path('presupuesto/partidas/<int:pk>/eliminar/', partidas_views.EliminarPartida.as_view(), name='eliminar_partida'),
+
+
+    # URLs para Recursos
+    path('presupuesto/recursos/<int:partida_id>/', recursos_views.ListarRecursos.as_view(), name='listar_recursos'),
+    path('presupuesto/recursos/<int:pk>/', recursos_views.DetalleRecurso.as_view(), name='detalle_recurso'),
+    path('presupuesto/recursos/<int:partida_id>/nuevo/', recursos_views.CrearRecurso.as_view(), name='crear_recurso'),
+    path('presupuesto/recursos/<int:pk>/editar/', recursos_views.EditarRecurso.as_view(), name='editar_recurso'),
+
 ]

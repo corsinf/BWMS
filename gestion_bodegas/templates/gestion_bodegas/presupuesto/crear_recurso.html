@@ -1,0 +1,22 @@
+{% extends 'gestion_bodegas/base.html' %}
+
+{% block content %}
+    <h1>Crear Recurso</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="tipo">Tipo:</label>
+        <input type="text" id="tipo" name="tipo" required>
+
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion"></textarea>
+
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" step="0.01" required>
+
+        <label for="costo_unitario">Costo Unitario:</label>
+        <input type="number" id="costo_unitario" name="costo_unitario" step="0.01" required>
+
+        <button type="submit">Guardar Recurso</button>
+    </form>
+    <a href="{% url 'listar_recursos' partida.id %}">Volver a la lista de recursos</a>
+{% endblock %}

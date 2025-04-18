@@ -4,7 +4,6 @@ from ..models import Proyecto, Cliente, Material, FotoProyecto  # Importamos los
 
 # ------------------- FORMULARIO DE PROYECTO -------------------
 class ProyectoForm(forms.ModelForm):
-    # Formulario para registrar o editar proyectos.
     class Meta:
-        model = Proyecto  # Basado en el modelo `Proyecto`.
-        fields = ['nombre', 'estado', 'cliente']  # Campos que se incluirán en el formulario.
+        model = Proyecto
+        fields = ['nombre', 'descripcion', 'fecha_inicio', 'fecha_fin', 'presupuesto_total']  # Usa solo los campos existentes

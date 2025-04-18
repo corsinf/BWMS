@@ -1,0 +1,15 @@
+{% extends 'gestion_bodegas/base.html' %}
+
+{% block content %}
+<h1>Lista de Proyectos</h1>
+<ul>
+    {% for proyecto in proyectos %}
+        <li>
+            {{ proyecto.nombre }} 
+            - <a href="{% url 'detalle_proyecto' proyecto.id %}">Detalles</a>
+            - <a href="{% url 'editar_proyecto' proyecto.id %}">Editar</a>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'crear_proyecto' %}">Crear Nuevo Proyecto</a>
+{% endblock %}
