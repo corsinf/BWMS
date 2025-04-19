@@ -4,22 +4,9 @@
     <h1>Crear Proyecto</h1>
     <form method="post">
         {% csrf_token %}
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
-
-        <label for="descripcion">Descripción:</label>
-        <textarea id="descripcion" name="descripcion"></textarea>
-
-        <label for="fecha_inicio">Fecha de Inicio:</label>
-        <input type="date" id="fecha_inicio" name="fecha_inicio" required>
-
-        <label for="fecha_fin">Fecha de Fin:</label>
-        <input type="date" id="fecha_fin" name="fecha_fin" required>
-
-        <label for="presupuesto_total">Presupuesto Total:</label>
-        <input type="number" id="presupuesto_total" name="presupuesto_total" step="0.01" required>
-
-        <button type="submit">Guardar Proyecto</button>
+        {{ form.as_p }} 
+        <button type="submit" class="btn btn-primary">Guardar Proyecto</button>
     </form>
-    <a href="{% url 'listar_proyectos' %}">Volver a la lista de proyectos</a>
+    <br>
+    <a href="{% url 'listar_proyectos' %}" class="btn btn-secondary">Volver a la lista de proyectos</a>
 {% endblock %}

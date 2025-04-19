@@ -4,6 +4,7 @@
 <h1>Lista de Proyectos</h1>
 <ul>
     {% for proyecto in proyectos %}
+    <br>
         <li>
             {{ proyecto.nombre }} 
             - <a href="{% url 'detalle_proyecto' proyecto.id %}">Detalles</a>
