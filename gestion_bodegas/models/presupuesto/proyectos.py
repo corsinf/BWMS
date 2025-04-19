@@ -12,3 +12,4 @@ class Proyecto(models.Model):
     
     class Meta:
         db_table = 'gestion_bodegas_proyecto'
+

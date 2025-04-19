@@ -12,7 +12,13 @@ class DetalleProyecto(DetailView):
     model = Proyecto
     template_name = 'gestion_bodegas/presupuesto/detalle_proyecto.html'
     context_object_name = 'proyecto'
-
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Asegúrate de que las partidas están disponibles
+        context['partidas'] = self.object.partidas.all()
+        return context
+    
 class CrearProyecto(CreateView):
     model = Proyecto
     template_name = 'gestion_bodegas/presupuesto/crear_proyecto.html'

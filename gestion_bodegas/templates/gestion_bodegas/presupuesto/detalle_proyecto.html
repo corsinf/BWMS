@@ -1,0 +1,66 @@
+{% extends 'gestion_bodegas/base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Proyecto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .container {
+            margin: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Detalle del Proyecto</h1>
+    </header>
+    <div class="container">
+        <h2>Información General</h2>
+        <p><strong>Nombre del proyecto:</strong> {{ proyecto.nombre }}</p>
+        <p><strong>Descripción:</strong> {{ proyecto.descripcion }}</p>
+        <p><strong>Fecha de inicio:</strong> {{ proyecto.fecha_inicio }}</p>
+        <p><strong>Fecha de fin:</strong> {{ proyecto.fecha_fin }}</p>
+        <p><strong>Presupuesto total:</strong> ${{ proyecto.presupuesto_total }}</p>
+
+        <a href="{% url 'listar_proyectos' %}" class="button">Volver a la lista de proyectos</a>
+    </div>
+</body>
+</html>
+{% endblock %}
