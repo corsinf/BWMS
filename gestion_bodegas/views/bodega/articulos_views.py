@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from ...models.bodega.articulos import Articulo
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from gestion_bodegas.models.bodega.articulos import Articulo
+from django.views.generic import ListView, CreateView
+from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.forms import ModelForm
 
@@ -16,13 +17,19 @@ class ListaArticulos(ListView):
 
 class CrearArticulo(CreateView):
     model = Articulo
-    form_class = ArticuloForm
     template_name = 'gestion_bodegas/articulos/crear_articulo.html'
+    fields = [
+        'codigo_rfid', 'nombre', 'descripcion', 'categoria',
+        'ubicacion_actual', 'responsable', 'estado'
+    ]
     success_url = reverse_lazy('lista_articulos')
 
 class EditarArticulo(UpdateView):
     model = Articulo
-    form_class = ArticuloForm
+    fields = [
+        'codigo_rfid', 'nombre', 'descripcion', 'categoria',
+        'ubicacion_actual', 'responsable', 'estado'
+    ]
     template_name = 'gestion_bodegas/articulos/editar_articulo.html'
     success_url = reverse_lazy('lista_articulos')
 

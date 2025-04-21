@@ -4,7 +4,7 @@
     <p>¿Estás seguro de que deseas eliminar el artículo "{{ articulo.nombre }}"?</p>
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Confirmar Eliminación</button>
+        <button type="submit">Eliminar</button>
+        <a href="{% url 'lista_articulos' %}">Cancelar</a>
     </form>
-    <a href="{% url 'lista_articulos' %}">Volver a la lista de artículos</a>
 {% endblock %}

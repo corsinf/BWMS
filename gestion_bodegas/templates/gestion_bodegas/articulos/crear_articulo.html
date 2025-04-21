@@ -3,7 +3,31 @@
     <h1>Crear Nuevo Artículo</h1>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <label for="codigo_rfid">Código RFID:</label>
+        <input type="text" name="codigo_rfid" id="codigo_rfid" required autofocus><br>
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" required><br>
+
+        <label for="descripcion">Descripción:</label>
+        <textarea name="descripcion" id="descripcion"></textarea><br>
+
+        <label for="categoria">Categoría:</label>
+        <input type="text" name="categoria" id="categoria" required><br>
+
+        <label for="ubicacion_actual">Ubicación Actual:</label>
+        <input type="text" name="ubicacion_actual" id="ubicacion_actual" required><br>
+
+        <label for="responsable">Responsable:</label>
+        <input type="text" name="responsable" id="responsable" required><br>
+
+        <label for="estado">Estado:</label>
+        <select name="estado" id="estado">
+            <option value="activo">Activo</option>
+            <option value="inactivo">Inactivo</option>
+            <option value="mantenimiento">Mantenimiento</option>
+        </select><br>
+
         <button type="submit">Guardar Artículo</button>
     </form>
     <a href="{% url 'lista_articulos' %}">Volver a la lista de artículos</a>

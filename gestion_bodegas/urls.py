@@ -3,7 +3,6 @@ from .views.presupuesto import proyectos_views, partidas_views, recursos_views
 from .views import (
     login_view, logout_view, index,
     clientes, register_cliente,
-    proyectos, register_project,
     materiales, register_material, edit_material, delete_material,
     evidencias, upload_foto,
     register_user,
@@ -11,7 +10,7 @@ from .views import (
 
 from .views.bodega import (
     bodegas_views,
-    articulos_views,
+    articulos_views,  # Importamos el módulo articulos_views
     inventario_views,
     ubicaciones_views,
 )
@@ -27,10 +26,6 @@ urlpatterns = [
     # Cliente
     path('clientes/', clientes, name='clientes'),
     path('clientes/registrar/', register_cliente, name='register_cliente'),
-
-    # Proyecto
-    # path('proyectos/', proyectos, name='proyectos'),
-    # path('proyectos/registrar/', register_project, name='register_project'),
 
     # Material
     path('materiales/', materiales, name='materiales'),
@@ -88,7 +83,6 @@ urlpatterns = [
     path('presupuesto/proyectos/nuevo/', proyectos_views.CrearProyecto.as_view(), name='crear_proyecto'),
     path('presupuesto/proyectos/<int:pk>/editar/', proyectos_views.EditarProyecto.as_view(), name='editar_proyecto'),
 
-
     # URLs para Partidas Presupuestarias
     path('presupuesto/partidas/<int:proyecto_id>/', partidas_views.ListarPartidas.as_view(), name='listar_partidas'),
     path('presupuesto/partidas/<int:pk>/', partidas_views.DetallePartida.as_view(), name='detalle_partida'),
@@ -96,11 +90,9 @@ urlpatterns = [
     path('presupuesto/partidas/<int:pk>/editar/', partidas_views.EditarPartida.as_view(), name='editar_partida'),
     path('presupuesto/partidas/<int:pk>/eliminar/', partidas_views.EliminarPartida.as_view(), name='eliminar_partida'),
 
-
     # URLs para Recursos
     path('presupuesto/recursos/<int:partida_id>/', recursos_views.ListarRecursos.as_view(), name='listar_recursos'),
     path('presupuesto/recursos/<int:pk>/', recursos_views.DetalleRecurso.as_view(), name='detalle_recurso'),
     path('presupuesto/recursos/<int:partida_id>/nuevo/', recursos_views.CrearRecurso.as_view(), name='crear_recurso'),
     path('presupuesto/recursos/<int:pk>/editar/', recursos_views.EditarRecurso.as_view(), name='editar_recurso'),
-
 ]
